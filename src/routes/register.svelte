@@ -2,15 +2,19 @@
     //Importamos la funcion de registro de usuario AUTH
    import {auth} from "../firebase";
 
-   let email = ''//Email del usuario
-   let password = ''//Password del usuario
-   let confirm = ''//Confirmar password
-   let username = ''//nombre del usuario
-   const register = async () =>{//Funcion de registro de usuario
+    let email = ''//Email del usuario
+    let password = ''//Password del usuario
+    let confirm = ''//Confirmar password
+    let username = ''//nombre del usuario
+    const register = async () =>{//Funcion de registro de usuario
         try{
-            auth.createUserWithEmailAndPassword(email,password)
-            //Mensaje de validacion
-            console.log("Usuario creado")
+            if(password == confirm){
+                auth.createUserWithEmailAndPassword(email,password)
+                //Mensaje de validacion
+                console.log("Usuario creado")
+            }else{
+                console.log("CONTRASENIAS DIFERENTES")
+            }
         } catch(error){
             //En caso de error al registrarse...
             console.log(error.code);
@@ -22,7 +26,7 @@
 <!--Formulario de registro-->
 <div class="container">
     <img src="/img/bg_1.jpg" alt="">
-    <form>
+    <form on:submit|preventDefault={register}>
         <div>
             <p><a href="/login">Entra</a> o reg&iacute;strate para poder crear, clasificar, comentar o guardar recetas</p>
             <label for="mail"> <span> Correo Electr&oacute;nico:</span></label>
