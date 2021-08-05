@@ -16,5 +16,7 @@
     }
     :global(body){
         font-family: 'Work Sans', sans-serif;
+        font-size: 16px;
+        background-color: #F7931E;
     }
 </style>

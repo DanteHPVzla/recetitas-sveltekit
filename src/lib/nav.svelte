@@ -50,6 +50,7 @@
 		height: 100vh;
 		width: 100%;
 		pointer-events: none;
+		z-index: 20;
 		&:focus-within {
 			.button {
 				pointer-events: none;
@@ -113,6 +114,7 @@
 		transition: transform 0.3s;
 		will-change: transform;
 		contain: paint;
+		z-index: 30;
 
 		ul {
 			height: 100%;
