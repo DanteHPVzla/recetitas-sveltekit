@@ -7,10 +7,11 @@ let firebaseConfig = {
     projectId: "recetario-607a0",
     storageBucket: "recetario-607a0.appspot.com",
     messagingSenderId: "26779463143",
-    appId: "1:26779463143:web:a1b22a79962d822c77e142"
+    appId: "1:26779463143:web:a1b22a79962d822c77e142",
+    databaseURL: "https://recetario-607a0-default-rtdb.firebaseio.com/",
+    storageBucket: "gs://recetario-607a0.appspot.com/"
   };
 
 firebase.initializeApp(firebaseConfig);
-
 
 export const auth = firebase.auth();

@@ -19,6 +19,9 @@
 
 
 <!--Formulario de registro-->
-<input type="text" placeholder="Email"  bind:value={email}>
-<input type="password" placeholder="Password" bind:value={password}>
-<button on:click={register}>Registrar</button>
+
+<form>
+    <input type="text" placeholder="Email"  bind:value={email}>
+    <input type="password" placeholder="Password" bind:value={password}>
+    <button on:click={register}>Registrar</button>
+</form>

@@ -3,15 +3,8 @@
 </script>
 
 <nav>
-    <ul>
-        <li>
-            <a href="/">Inicio</a>
-        </li>
-        <li>
-            <a href="/login">Login</a>
-        </li>
-        <li>
-            <a href="/register">Registrarse</a>
-        </li>
-    </ul>
+    <a href="/">Inicio</a>
+    <a href="/login">Login</a>
+    <a href="/register">Registrarse</a>
 </nav>
+
