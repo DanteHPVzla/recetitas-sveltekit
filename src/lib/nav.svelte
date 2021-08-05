@@ -8,10 +8,10 @@
             <a href="/">Inicio</a>
         </li>
         <li>
-            <a href="/login.svelte">Login</a>
+            <a href="/login">Login</a>
         </li>
         <li>
-            <a href="/register.svelte">Registrarse</a>
+            <a href="/register">Registrarse</a>
         </li>
     </ul>
 </nav>

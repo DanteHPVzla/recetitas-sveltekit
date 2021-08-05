@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import "firebase/auth";
 
-const firebaseConfig = {
+let firebaseConfig = {
     apiKey: "AIzaSyB6tHwlxvP0awd_drZzYZEVnM-dg8r7FAk",
     authDomain: "recetario-607a0.firebaseapp.com",
     projectId: "recetario-607a0",
