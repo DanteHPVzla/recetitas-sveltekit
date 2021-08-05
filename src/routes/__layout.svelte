@@ -1,8 +1,8 @@
 <script>
-    import Navigation from '../components/nav.nav.svelte'
+    import Nav from '$lib/nav.svelte' 
 </script>
 
 <div class="content">
-    <Navigation/>
+    <Nav/>
     <slot></slot>
 </div>
