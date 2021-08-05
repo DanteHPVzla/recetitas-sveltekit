@@ -26,6 +26,9 @@
 		justify-content: flex-end;
 		align-items: center;
 		height: 65px;
+		position: sticky;
+		top: 0;
+		z-index: 5;
 		.logoContainer {
 			display: flex;
 			justify-content: center;

@@ -20,84 +20,124 @@
 </script>
 
 <!--Formulario de registro-->
-<form>
-    <p><a href="/login">Entra</a> o reg&iacute;strate para poder crear, clasificar, comentar o guardar recetas</p>
-    <label for="mail"><span>Correo Electr&oacute;nico:</span></label>
-    <input type="text" name="mail" bind:value={email}>
-    <label for="password"><span>Contrase&ntilde;a:</span></label>
-    <input type="password" name="password" bind:value={password}>
-    <label for="confirm"><span>Confirmar contrase&ntilde;a:</span></label>
-    <input type="password" name="confirm" bind:value={confirm}>
-    <label for="mail"><span>Nombre de usuario:</span></label>
-    <input type="text" bind:value={username}>
-    <p>www.recipetime.netlify.app/usuario/</p>
-    <p>Se usa la direcci&oacute;n para tu p&aacute;gina de usuario, pi&eacute;nsalo bien porque no podr&aacute;s cambiarlo.</p>
-    <div>
-        <input type="checkbox" name="terms" id="terms">
-        <label for="terms" >He le&iacute;do y acepto la <a href="/">pol&iacute;tica de privacidad y participaci&oacute;n.</a></label>
-    </div>
-    <br>
-    <button on:click={register}>Registrar</button>
-</form>
+<div class="container">
+    <img src="/img/bg_1.jpg" alt="">
+    <form>
+        <div>
+            <p><a href="/login">Entra</a> o reg&iacute;strate para poder crear, clasificar, comentar o guardar recetas</p>
+            <label for="mail"> <span> Correo Electr&oacute;nico:</span></label>
+            <input type="text" name="mail" bind:value={email}>
+            <label for="password"> <span> Contrase&ntilde;a:</span></label>
+            <input type="password" name="password" bind:value={password}>
+            <label for="confirm"> <span> Confirmar contrase&ntilde;a:</span></label>
+            <input type="password" name="confirm" bind:value={confirm}>
+            <label for="mail"> <span> Nombre de usuario:</span></label>
+            <input type="text" bind:value={username}>
+            <p>www.recipetime.netlify.app/usuario/</p>
+            <p>Se usa la direcci&oacute;n para tu p&aacute;gina de usuario, pi&eacute;nsalo bien porque no podr&aacute;s cambiarlo.</p>
+            <div class="terms-box">
+                <input type="checkbox" name="terms" >
+                <label for="terms" id="terms">He le&iacute;do y acepto la <a href="/">pol&iacute;tica de privacidad y participaci&oacute;n.</a></label>
+            </div>
+            <br>
+            <button on:click={register}>Registrar</button>
+        </div>
+    </form>
+</div>
 
 <style lang="scss">
-
-form{
-
-    width: 300px;
-    margin: 30px auto;
-    border-radius: 20px;
+.container{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    padding: 20px;
-
-    p{
-        font-size: 12px;
-        color: gray;
-    }
-    
-    label{
-        display: block;
-        font-weight: bold;
-        padding: 0px 15px;
-        color: #f05a28;
+    flex-direction: column;
+    height: calc(100vh - 65px);
+    img{
         width: 100%;
-        span{
-            background: white;
+        height: 100%;
+        min-height: 250px;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+        border-bottom: solid 2px #f05a28;
+    }
+    form{
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p{
+            font-size: 12px;
+            &:first-of-type{
+                margin-bottom: 5px;
+            }
+        }
+        a{
+            color: #f05a28;
+        }
+        div{
+            display: flex;
+            flex-direction: column;
+            max-width: 320px;
+            padding: 20px;
+            label{
+                font-weight: bold;
+                color: #f05a28;
+                display: block;
+                position: relative;
+                z-index: 1;
+                margin-left: 10px;
+                span{
+                    background: white;
+                    padding: 2px 10px;
+                }
+                #terms{
+                    display: inline;
+                    color: black;
+                }
+            }
+            .terms-box{
+                padding: 10px 0;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                font-size: 12px;
+                
+            }
+            button {
+                background-color: #f05a28;
+                border: solid 2px #f05a28;
+                border-radius: 20px;
+                padding: 10px;
+                text-transform: uppercase;
+                font-weight: bold;
+                color: white;
+                cursor: pointer;
+                transition: all .2s;
+                &:hover{
+                    background-color: white;
+                    color: #f05a28;
+                }
+            }
+        }
+        input{
+            border: dashed 2px #f05a28;
+            border-radius: 20px 20px 0 0;
+            padding: 15px 10px 10px;
+            outline: none;
+            position: relative;
+            margin-top: -10px;
+            margin-bottom: 5px;
+        }
+    }
+    $breakpoint-tablet: 768px;
+    @media (min-width: $breakpoint-tablet) {
+        flex-direction: row;
+        img{
+           border-bottom: none;
+           border-right: solid 2px #f05a28; 
+        }
+        form{
             width: 100%;
         }
-        
-        position: relative;
-        &:last-of-type{
-            display: inline;
-            padding: auto;
-        }
-        z-index: 9;
     }
-
-    input{
-        border: none;
-        outline: none;
-        padding: 12px 8px 4px;
-        margin-top: -12px;
-        margin-bottom: 10px;
-        z-index: 0;
-        border: dashed 2px #f05a28 ;
-        width: 250px;
-        border-radius: 10px 10px 0px 0px;
-        &::placeholder{
-            color: #f05a28;
-            opacity: .7;
-        }
-    }
-
-    #terms{
-        width: auto;
-    }
-
 }
     
 </style>
