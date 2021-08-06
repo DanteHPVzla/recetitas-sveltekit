@@ -1,3 +1,22 @@
+<script>
+	import{activeSesion} from "../store";
+	import {auth} from "../firebase";
+	const logout = async () => {
+		try{
+			if($activeSesion){
+				auth.signOut();
+				console.log("Salida exitosa")
+			}else{
+				console.log("No hay usuario activo")
+			}
+		}catch(error){
+			console.log(error.message)
+		}
+	}
+
+</script>
+
+
 <nav>
 	<a href="/" class="logoContainer">
 		<img src="./img/logo_1.png" alt="RecipeTime Logo" />
@@ -15,9 +34,13 @@
 			<li><a href="/">Inicio</a></li>
 			<li><a href="/login">Iniciar Sesion</a></li>
 			<li><a href="/register">Registrarse</a></li>
+			<li on:click={logout}>Cerrar Sesion Activa</li>
 		</ul>
 	</div>
 </div>
+
+
+
 
 <style lang="scss">
 	nav {

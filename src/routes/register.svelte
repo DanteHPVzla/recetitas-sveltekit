@@ -44,7 +44,7 @@
                 <label for="terms" id="terms">He le&iacute;do y acepto la <a href="/">pol&iacute;tica de privacidad y participaci&oacute;n.</a></label>
             </div>
             <br>
-            <button on:click={register}>Registrar</button>
+            <button>Registrar</button>
         </div>
     </form>
 </div>

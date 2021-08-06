@@ -1,5 +1,18 @@
 <script>
-    import Nav from '$lib/nav.svelte' 
+    import Nav from '$lib/nav.svelte';
+    import {auth} from '../firebase'; 
+    import {activeSesion} from '../store';
+
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            activeSesion.set(1)
+            console.log("usuario activo")
+        }else{
+            activeSesion.set(0)
+            console.log("usuario inactivo")
+        }
+        });
+        
 </script>
 
 <div class="content">
