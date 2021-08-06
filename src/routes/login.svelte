@@ -36,7 +36,7 @@
             <input type="text" name="mail" bind:value={email}>
             <label for="password"> <span> Contrase&ntilde;a:</span></label>
             <input type="password" name="password" bind:value={password}>
-            <button on:click={login}>login</button>
+            <button on:click={login}>Iniciar sesion</button>
         </div>
     </form>
 </div>

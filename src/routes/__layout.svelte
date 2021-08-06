@@ -1,22 +1,27 @@
 <script>
-    import Nav from '$lib/nav.svelte';
+    import inactiveNav from '$lib/inactiveNav.svelte';
+    import activeNav from '$lib/activeNav.svelte';
     import {auth} from '../firebase'; 
     import {activeSesion} from '../store';
-
+    const navs = [
+		{ sesion: 'inactive', component: inactiveNav },
+		{ sesion: 'active',   component: activeNav   }
+	];
+    let sesion = navs[0];
     auth.onAuthStateChanged((user) => {
         if (user) {
-            activeSesion.set(1)
-            console.log("usuario activo")
+            activeSesion.set(1);
+            sesion = navs[1];
         }else{
             activeSesion.set(0)
-            console.log("usuario inactivo")
+            sesion = navs[0];
         }
         });
         
 </script>
 
 <div class="content">
-    <Nav/>
+    <svelte:component this={sesion.component} />
     <slot></slot>
 </div>
 

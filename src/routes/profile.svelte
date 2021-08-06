@@ -110,6 +110,7 @@
             .recipes{
                 display: flex;
                 flex-wrap: wrap;
+                gap: 10px;
                 justify-content: center;
                 @media (min-width: 768px) {
                     justify-content: space-between;

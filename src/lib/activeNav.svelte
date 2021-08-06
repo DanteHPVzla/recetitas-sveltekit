@@ -32,9 +32,8 @@
 	<div id="nav-content" tabindex="0">
 		<ul>
 			<li><a href="/">Inicio</a></li>
-			<li><a href="/login">Iniciar Sesion</a></li>
-			<li><a href="/register">Registrarse</a></li>
-			<li on:click={logout}>Cerrar Sesion Activa</li>
+			<li><a href="/profile">Perfil</a></li>
+			<li on:click={logout}><a href="/">Cerrar Sesion Activa</a></li>
 		</ul>
 	</div>
 </div>
