@@ -28,6 +28,7 @@
     <img src="/img/bg_1.jpg" alt="">
     <form on:submit|preventDefault={register}>
         <div>
+            <h4>Registro</h4>
             <p><a href="/login">Entra</a> o reg&iacute;strate para poder crear, clasificar, comentar o guardar recetas</p>
             <label for="mail"> <span> Correo Electr&oacute;nico:</span></label>
             <input type="text" name="mail" bind:value={email}>
@@ -82,6 +83,11 @@
             flex-direction: column;
             max-width: 320px;
             padding: 20px;
+            h4{
+                color: #f05a28;
+                font-size: 2em;
+                margin-bottom: 10px;
+            }
             label{
                 font-weight: bold;
                 color: #f05a28;
