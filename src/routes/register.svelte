@@ -9,7 +9,7 @@
     const register = async () =>{//Funcion de registro de usuario
         try{
             if(password == confirm){
-                auth.createUserWithEmailAndPassword(email,password)
+                await auth.createUserWithEmailAndPassword(email,password)
                 //Mensaje de validacion
                 console.log("Usuario creado")
                 ///REDIRECCIONAMIENTO A PERFIL

@@ -11,7 +11,7 @@
 
         try{
             if(!$activeSesion){
-                auth.signInWithEmailAndPassword(email,password)
+                await auth.signInWithEmailAndPassword(email,password)
                 
                 ///REDIRECCIONAMIENTO A PERFIL
                 window.history.pushState('', '', '/profile');

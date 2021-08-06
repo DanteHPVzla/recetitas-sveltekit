@@ -9,6 +9,9 @@
     const hide = () => {
         document.getElementById("edit").style.visibility = 'hidden';
     }
+
+
+    
 </script>
 
 <!--Formulario de registro-->
@@ -35,6 +38,9 @@
         </div>
     </section>
 </div>
+
+
+<button on:click={prueba}>PRUEBAAAAAAAA</button>
 
 <style lang="scss">
 .container{
