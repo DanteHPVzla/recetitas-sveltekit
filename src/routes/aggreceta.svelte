@@ -96,63 +96,80 @@
     }
 </script>
 
+<div class="container">
+    <form class="form-container">
+        <h1>Agregar receta</h1>
+        
+        <h2>Titulo de la receta</h2>
+        <input type="text" bind:value={titulo} placeholder="Titulo Receta">
+        
+        <h2>Descripcion de la receta</h2>
+        <input type="text" bind:value={descripcion} placeholder="Descripcion de la receta">
+        
+        <h2>Duracion en minutos</h2>
+        <input type="number" bind:value={duracion} placeholder="Duracion de la receta">
+        
+        <h2>Lista de ingredientes</h2>
+        <form on:submit|preventDefault={aggIngrediente}>
+            <input type="text" bind:value={ingrediente} placeholder="Ingrediente {nIngredientes}">
+            <button>Agregar</button>
+        </form>
+        
+        <h2>Pasos a seguir</h2>
+        <form on:submit|preventDefault={aggPaso}>
+            <input type="text" bind:value={paso} placeholder="Pasos a seguir {[nPasos]}">
+            <button>Agregar</button>
+        </form>
+        
+        <h2>Dificultad</h2>
+        <select name="dificultad" id="dificultad" bind:value={dificultad}>
+            <option value="Facil">Facil</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Dificil">Dificil</option>
+        </select>
+        
+        <h2>Foto</h2>
+        <input type="file" on:change={(e)=>onFileSelected(e)}>
+        
+        <button on:click={subirReceta}>Subir</button>
+    </form>
+    <section class="preview">
+        <h1>{titulo}</h1>
+        <h1>{(duracion===0) ? duracion = "" : duracion}</h1>
+        <h1>{descripcion}</h1>
+        <h1>{dificultad}</h1>
+        <ul>
+            {#each ingredientes as item,index}
+                <li>
+                    {index + 1} - {item}
+                </li>   
+            {/each}
+        </ul>
+        
+        <ul>
+            {#each pasos as item,index}
+                <li>
+                    {index + 1} - {item}
+                </li>
+            {/each}
+        </ul>
+    </section>
+</div>
 
-<h1>Agregar receta</h1>
 
-<h2>Titulo de la receta</h2>
-<input type="text" bind:value={titulo} placeholder="Titulo Receta">
-
-<h2>Descripcion de la receta</h2>
-<input type="text" bind:value={descripcion} placeholder="Descripcion de la receta">
-
-<h2>Duracion en minutos</h2>
-<input type="number" bind:value={duracion} placeholder="Duracion de la receta">
-
-<h2>Lista de ingredientes</h2>
-<form on:submit|preventDefault={aggIngrediente}>
-    <input type="text" bind:value={ingrediente} placeholder="Ingrediente {nIngredientes}">
-    <button>Agregar</button>
-</form>
-
-<h2>Pasos a seguir</h2>
-<form on:submit|preventDefault={aggPaso}>
-    <input type="text" bind:value={paso} placeholder="Pasos a seguir {[nPasos]}">
-    <button>Agregar</button>
-</form>
-
-<h2>Dificultad</h2>
-<select name="dificultad" id="dificultad" bind:value={dificultad}>
-    <option value="Facil">Facil</option>
-    <option value="Intermedio">Intermedio</option>
-    <option value="Dificil">Dificil</option>
-</select>
-
-<h2>Foto</h2>
-<input type="file" on:change={(e)=>onFileSelected(e)}>
-
-<button on:click={subirReceta}>Subir</button>
-
-<h1>{titulo}</h1>
-<h1>{duracion}</h1>
-<h1>{descripcion}</h1>
-<h1>{dificultad}</h1>
-
-<ul>
-{#each ingredientes as item,index}
-    <li>
-        {index + 1} - {item}
-    </li>   
-{/each}
-</ul>
-
-<ul>
-{#each pasos as item,index}
-    <li>
-        {index + 1} - {item}
-    </li>
-{/each}
-</ul>
 
 <style lang="scss">
-
+    .container{
+        display: flex;
+        flex-direction: column;
+        .form-container{
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+    }
+    .preview{
+        background: white;
+        padding: 20px;
+    }
 </style>
