@@ -33,6 +33,7 @@
 		<ul>
 			<li><a href="/">Inicio</a></li>
 			<li><a href="/profile">Perfil</a></li>
+			<li><a href="/aggreceta">Subir Receta</a></li>
 			<li on:click={logout}><a href="/">Cerrar Sesion Activa</a></li>
 		</ul>
 	</div>
