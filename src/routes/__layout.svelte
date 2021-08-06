@@ -4,6 +4,7 @@
     import {auth} from '../firebase'; 
     import {activeSesion} from '../store';
     import { nombreUsuario , correoUsuario, creacionUsuario, photoURL} from '../store';
+    import { recetasUser, recetasTotal } from '../store';
 
     const navs = [
 		{ sesion: 'inactive', component: inactiveNav },

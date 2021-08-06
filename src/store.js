@@ -6,3 +6,5 @@ export const nombreUsuario = writable('');
 export const correoUsuario = writable('');
 export const creacionUsuario = writable('');
 export const photoURL = writable('');
+export const recetasUser = writable([]);
+export const recetasTotal = writable([]);

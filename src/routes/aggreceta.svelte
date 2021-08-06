@@ -12,6 +12,7 @@
     let dificultad = '';
     let imagen;
 
+
     //Apartado de seleccion de imagen
     const onFileSelected =(e)=>{
         imagen = e.target.files[0];
@@ -43,7 +44,7 @@
 
 
     //Subir recetas
-    const subirReceta = () =>{
+    const subirReceta = async ()  =>{
         let user = auth.currentUser
 
         ///////////////////////////////////////SUBIENDO IMAGEN
@@ -55,7 +56,7 @@
         let uploadTask = storageRef.put(imagen);
 
         const funcion = async () =>{
-            await uploadTask.on('state_changed', function(){
+             uploadTask.on('state_changed', function(){
                 },function(error) {
                         console.log(error.message)
                 },function() {
@@ -74,29 +75,29 @@
                         }
                         db.collection($correoUsuario).doc().set(receta);
                         console.log("SUBIDA EXITOSA BRINDEMOOOS")
+                        ////////////////////////////////////////////////////////RESETEO
+                        //reinicio de ingredientes
+                        nIngredientes = 1;
+                        ingredientes = [];
+                        ingrediente = '';
+
+                        //reinicio de pasos
+                        nPasos = 1;
+                        paso = '';
+                        pasos = [];
+
+                        //Reinicio general
+                        titulo = '';
+                        duracion = 0;
+                        descripcion = '';
+                        imagen = '';
+
                     });
             });
         }
-        
-        //Funcion para subir receta 
+
         funcion()
-
-        ////////////////////////////////////////////////////////RESETEO
-        //reinicio de ingredientes
-        nIngredientes = 1;
-        ingredientes = [];
-        ingrediente = '';
-
-        //reinicio de pasos
-        nPasos = 1;
-        paso = '';
-        pasos = [];
-
-        //Reinicio general
-        titulo = '';
-        duracion = 0;
-        descripcion = '';
-        imagen = '';
+        
     }
 </script>
 
