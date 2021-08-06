@@ -3,6 +3,7 @@
     import { db } from "../firebase";
     import { auth } from "../firebase";
     import { storage } from "../firebase";
+    import {correoUsuario} from "../storage";
 
     //Inicializacion de variables genereales
     let titulo = '';
@@ -49,7 +50,7 @@
         
         let imgURL;
 
-        let storageRef = storage.ref('/recetas/' + imagen.name);
+        let storageRef = storage.ref('/recetas/' + $correoUsuario + imagen.name);
         
         let uploadTask = storageRef.put(imagen);
 
@@ -77,7 +78,7 @@
             img: imgURL
         }
         
-        db.collection('recetas').doc().set(receta);
+        db.collection('recetas/' + $correoUsuario).doc().set(receta);
         ////////////////////////////////////////////////////////RESETEO
         //reinicio de ingredientes
         nIngredientes = 1;

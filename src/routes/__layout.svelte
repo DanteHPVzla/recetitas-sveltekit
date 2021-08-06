@@ -3,6 +3,8 @@
     import activeNav from '$lib/activeNav.svelte';
     import {auth} from '../firebase'; 
     import {activeSesion} from '../store';
+    import { nombreUsuario , correoUsuario, creacionUsuario, photoURL} from '../store';
+
     const navs = [
 		{ sesion: 'inactive', component: inactiveNav },
 		{ sesion: 'active',   component: activeNav   }
@@ -10,9 +12,16 @@
     let sesion = navs[0];
     auth.onAuthStateChanged((user) => {
         if (user) {
+            nombreUsuario.set(user.displayName);
+            correoUsuario.set(user.email);
+            creacionUsuario.set(user.metadata.creationTime);
+            photoURL.set(user.photoURL);
             activeSesion.set(1);
             sesion = navs[1];
         }else{
+            nombreUsuario.set("No disponible");
+            correoUsuario.set("No disponible");
+            creacionUsuario.set("No disponible")
             activeSesion.set(0)
             sesion = navs[0];
         }

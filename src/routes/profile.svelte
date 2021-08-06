@@ -1,8 +1,9 @@
 <script>
 	import RecipeCard from './../lib/recipeCard.svelte';
-    let profileImg = null; //imagen de perfil
-    let username = ''//nombre de usuario
-    let horas = null; //activo hace...
+    import { auth, storage } from '../firebase'
+    import { nombreUsuario, creacionUsuario, photoURL, correoUsuario} from '../store'
+
+
     const show = () => {
         document.getElementById("edit").style.visibility = 'visible';
     }
@@ -10,19 +11,49 @@
         document.getElementById("edit").style.visibility = 'hidden';
     }
 
+    //Apartado de seleccion de imagen
+    const onFileSelected = (e)=>{
+        let user = auth.currentUser
 
-    
+        let imagen = e.target.files[0];
+       
+        let storageRef = storage.ref('/usuarios/' + $correoUsuario + "/" + imagen.name);
+        
+        let uploadTask = storageRef.put(imagen);
+
+        uploadTask.on('state_changed', function(){
+            },function(error) {
+                    console.log(error.message)
+            },function() {
+                uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                    user.updateProfile({
+                        photoURL:downloadURL
+                    }).then(() =>{
+                        console.log("SUBIDA EXITOSA")
+                    }).catch((error) =>{
+                        console.log(error)
+                    })                    
+                    photoURL.set(downloadURL);
+                });
+        });
+    }
+
+
 </script>
 
 <!--Formulario de registro-->
 <div class="container">
     <div class="img-bg">
         <div on:mouseenter={show} on:mouseleave={hide} class="profile-img">
-            <img src="https://placekitten.com/200/300" alt="">
-            <div id="edit"><span class="fas fa-edit"></span></div>
+            <img src={$photoURL} alt="">
+            <div id="edit">
+                <input type="file" on:change={(e)=>onFileSelected(e)} style="opacity: 0; position:absolute; width: 100%; height:100%">
+                <span class="fas fa-edit"></span>
+                
+            </div>
         </div>
-        <h3>Username</h3>
-        <p>Activo hace: {horas}h</p>
+        <h3>{$nombreUsuario}</h3>
+        <p>Fecha creacion: {$creacionUsuario}h</p>
     </div>
     <section>
         <div class="title-container">
@@ -38,9 +69,6 @@
         </div>
     </section>
 </div>
-
-
-<button on:click={prueba}>PRUEBAAAAAAAA</button>
 
 <style lang="scss">
 .container{
