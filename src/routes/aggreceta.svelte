@@ -43,20 +43,18 @@
     //Subir recetas
     const subirReceta = () =>{
         let user = auth.currentUser
-        console.log(user)
+
         ///////////////////////////////////////SUBIENDO IMAGEN
+        
         let imgURL;
 
-        //let key = storage.ref('/recetas/').key(); 
-
-        let storageRef = storage.ref('/recetas/'+ imagen.name);
-
+        let storageRef = storage.ref('/recetas/' + imagen.name);
+        
         let uploadTask = storageRef.put(imagen);
 
-        uploadTask.on('state_changed', function(snapshot){
-           
+        uploadTask.on('state_changed', function(){
             },function(error) {
-                    console.log(error)
+                    console.log(error.message)
             },function() {
                 console.log("SUBIDA EXITOSA BRINDEMOOOS")
                 uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
@@ -75,7 +73,7 @@
             pasos:pasos,
             npuntuado:0,
             puntuado:0.0,
-            img:imgURL
+            img: imgURL
         }
         
         db.collection('recetas').doc().set(receta);
