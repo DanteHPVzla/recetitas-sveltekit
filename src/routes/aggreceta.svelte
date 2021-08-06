@@ -40,6 +40,7 @@
         console.log(pasos)
     }
 
+
     //Subir recetas
     const subirReceta = () =>{
         let user = auth.currentUser
@@ -64,7 +65,7 @@
 
 
         let receta = {
-            //autor: correo o nombre del autor
+            autor: user.email,
             titulo: titulo,
             descripcion: descripcion,
             duracion: duracion,

@@ -11,7 +11,12 @@
 
         try{
             if(!$activeSesion){
-                auth.signInWithEmailAndPassword(email,password)
+                await auth.signInWithEmailAndPassword(email,password)
+                
+                ///REDIRECCIONAMIENTO A PERFIL
+                window.history.pushState('', '', '/profile');
+                location.reload();
+                
                 //Mensaje de validacion
             }else{
                 console.log("Ya hay una sesion activa")
@@ -36,7 +41,7 @@
             <input type="text" name="mail" bind:value={email}>
             <label for="password"> <span> Contrase&ntilde;a:</span></label>
             <input type="password" name="password" bind:value={password}>
-            <button on:click={login}>Iniciar sesion</button>
+            <button>Iniciar sesion</button>
         </div>
     </form>
 </div>
