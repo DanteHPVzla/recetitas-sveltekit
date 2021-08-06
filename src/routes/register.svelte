@@ -10,8 +10,21 @@
         try{
             if(password == confirm){
                 await auth.createUserWithEmailAndPassword(email,password)
+                
+                let user = auth.currentUser
+
+                await user.updateProfile({
+                    displayName:username
+                }).then(() =>{
+                    console.log("Nombre de usuario registrado correctamente")
+                }).catch((error) =>{
+                    console.log(error)
+                })
+
                 //Mensaje de validacion
                 console.log("Usuario creado")
+                
+
                 ///REDIRECCIONAMIENTO A PERFIL
                 window.history.pushState('', '', '/profile');
                 location.reload();

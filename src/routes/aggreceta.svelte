@@ -3,6 +3,7 @@
     import { db } from "../firebase";
     import { auth } from "../firebase";
     import { storage } from "../firebase";
+    import { correoUsuario } from "../store";
 
     //Inicializacion de variables genereales
     let titulo = '';
@@ -11,6 +12,7 @@
     let dificultad = 'Facil';
     let imagen;
     let  avatar, fileinput;
+
 
     //Apartado de seleccion de imagen
     const onFileSelected =(e)=>{
@@ -48,58 +50,60 @@
 
 
     //Subir recetas
-    const subirReceta = () =>{
+    const subirReceta = async ()  =>{
         let user = auth.currentUser
 
         ///////////////////////////////////////SUBIENDO IMAGEN
         
         let imgURL;
 
-        let storageRef = storage.ref('/recetas/' + imagen.name);
+        let storageRef = storage.ref('/recetas/' + $correoUsuario + imagen.name);
         
         let uploadTask = storageRef.put(imagen);
 
-        uploadTask.on('state_changed', function(){
-            },function(error) {
-                    console.log(error.message)
-            },function() {
-                console.log("SUBIDA EXITOSA BRINDEMOOOS")
-                uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-                    imgURL = downloadURL;
-                });
-        });
+        const funcion = async () =>{
+             uploadTask.on('state_changed', function(){
+                },function(error) {
+                        console.log(error.message)
+                },function() {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                        let receta = {
+                            autor: user.email,
+                            titulo: titulo,
+                            descripcion: descripcion,
+                            duracion: duracion,
+                            dificultad: dificultad,
+                            ingredientes:ingredientes,
+                            pasos:pasos,
+                            npuntuado:0,
+                            puntuado:0.0,
+                            imgURL: downloadURL
+                        }
+                        db.collection($correoUsuario).doc().set(receta);
+                        console.log("SUBIDA EXITOSA BRINDEMOOOS")
+                        ////////////////////////////////////////////////////////RESETEO
+                        //reinicio de ingredientes
+                        nIngredientes = 1;
+                        ingredientes = [];
+                        ingrediente = '';
 
+                        //reinicio de pasos
+                        nPasos = 1;
+                        paso = '';
+                        pasos = [];
 
-        let receta = {
-            autor: user.email,
-            titulo: titulo,
-            descripcion: descripcion,
-            duracion: duracion,
-            dificultad: dificultad,
-            ingredientes:ingredientes,
-            pasos:pasos,
-            npuntuado:0,
-            puntuado:0.0,
-            img: imgURL
+                        //Reinicio general
+                        titulo = '';
+                        duracion = 0;
+                        descripcion = '';
+                        imagen = '';
+
+                    });
+            });
         }
+
+        funcion()
         
-        db.collection('recetas').doc().set(receta);
-        ////////////////////////////////////////////////////////RESETEO
-        //reinicio de ingredientes
-        nIngredientes = 1;
-        ingredientes = [];
-        ingrediente = '';
-
-        //reinicio de pasos
-        nPasos = 1;
-        paso = '';
-        pasos = [];
-
-        //Reinicio general
-        titulo = '';
-        duracion = 0;
-        descripcion = '';
-        imagen = '';
     }
 </script>
 
