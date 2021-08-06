@@ -3,7 +3,7 @@
     import { db } from "../firebase";
     import { auth } from "../firebase";
     import { storage } from "../firebase";
-    import {correoUsuario} from "../storage";
+    import { correoUsuario } from "../store";
 
     //Inicializacion de variables genereales
     let titulo = '';
@@ -54,31 +54,33 @@
         
         let uploadTask = storageRef.put(imagen);
 
-        uploadTask.on('state_changed', function(){
-            },function(error) {
-                    console.log(error.message)
-            },function() {
-                console.log("SUBIDA EXITOSA BRINDEMOOOS")
-                uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-                    imgURL = downloadURL;
-                });
-        });
-
-
-        let receta = {
-            autor: user.email,
-            titulo: titulo,
-            descripcion: descripcion,
-            duracion: duracion,
-            dificultad: dificultad,
-            ingredientes:ingredientes,
-            pasos:pasos,
-            npuntuado:0,
-            puntuado:0.0,
-            img: imgURL
+        const funcion = async () =>{
+            await uploadTask.on('state_changed', function(){
+                },function(error) {
+                        console.log(error.message)
+                },function() {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                        let receta = {
+                            autor: user.email,
+                            titulo: titulo,
+                            descripcion: descripcion,
+                            duracion: duracion,
+                            dificultad: dificultad,
+                            ingredientes:ingredientes,
+                            pasos:pasos,
+                            npuntuado:0,
+                            puntuado:0.0,
+                            imgURL: downloadURL
+                        }
+                        db.collection($correoUsuario).doc().set(receta);
+                        console.log("SUBIDA EXITOSA BRINDEMOOOS")
+                    });
+            });
         }
         
-        db.collection('recetas/' + $correoUsuario).doc().set(receta);
+        //Funcion para subir receta 
+        funcion()
+
         ////////////////////////////////////////////////////////RESETEO
         //reinicio de ingredientes
         nIngredientes = 1;
