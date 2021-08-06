@@ -12,6 +12,9 @@
                 auth.createUserWithEmailAndPassword(email,password)
                 //Mensaje de validacion
                 console.log("Usuario creado")
+                ///REDIRECCIONAMIENTO A PERFIL
+                window.history.pushState('', '', '/profile');
+                location.reload();
             }else{
                 console.log("CONTRASENIAS DIFERENTES")
             }
