@@ -2,12 +2,14 @@
     export let imgURL = "https://placekitten.com/200/300";
     export let title = "undefined"
     //TODO: ponle a la descripcion un maximo de caracteres a mostrar => Luego, (CAMBIO A FUTURO)
-    export let description = "undefined"
+    export let description = "undefined";
     export let stars = 0;
+    export let index = 0;
+
 </script>
 
 <div class="card">
-    <a href="/">
+    <a href={'recipes/' + index}>
         <div class="img">
             <p>{title}</p>
             <img src={imgURL} alt="">
