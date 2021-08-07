@@ -1,6 +1,8 @@
 <script>
 	import{activeSesion} from "../store";
 	import {auth} from "../firebase";
+
+	let email ='';//Email del usuario
 	const logout = async () => {
 		try{
 			if($activeSesion){
@@ -46,7 +48,13 @@
 	<div id="nav-content" tabindex="0">
 		<ul>
 			<li><a href="/">Inicio</a></li>
-			<li><a href="/profile">Perfil</a></li>
+			{#if email === "admin@admin.com"}
+				 <!-- content here -->
+				 <li><a href="/admin">Perfil</a></li>
+			{:else}
+			<!-- else content here -->
+				<li><a href="/profile">Perfil</a></li>
+			{/if}
 			<li><a href="/aggreceta">Subir Receta</a></li>
 			<li on:click={logout}><a href="/">Cerrar Sesion Activa</a></li>
 			<li id="delete" on:click={borrar}><a href="/"><span class="fas fa-trash"></span> Dar de baja</a></li>
