@@ -19,6 +19,7 @@
     let steps = ['sazonar elatun','cocinar el atun','comer el atun'];
     let puntos = 0;
     let stars = 0;
+    let lectura = 0;
     
     $recetasTotal.forEach(item =>{
         if(item.id == id){
@@ -32,9 +33,6 @@
             puntos = item.puntuado;
         }
     })
-
-    //valores
-    
 
     const clickStar = async (n) => {
         stars = n;
@@ -50,8 +48,27 @@
             puntuado: stars
         })
 
-        puntos = stars
-        
+        puntos = stars   
+    }
+
+    function leer(){
+        /*
+        if (!'speechSynthesis' in window){
+             alert("Lo siento, tu navegador no soporta esta tecnología")
+            }
+        else{
+            vocesDisponibles = window.speechSynthesis.getVoices();
+            console.log({ vocesDisponibles })
+        }
+    
+        if(lectura == steps.length){
+            lectura = 0;
+        }else{
+            console.log(lectura)
+            window.speechSynthesis.speak("Hola mundo");
+            lectura++;
+        }
+        */
     }
 
 </script>
@@ -87,6 +104,8 @@
              <!-- content here -->
             <p>{i + 1}. {item}</p>
         {/each}
+
+            <button on:click={leer}>Leer paso {lectura + 1}</button>
         <div class="rating-container">
             <h4>Valora esta receta</h4>
             <span class="fa fa-star" on:click={() => clickStar(1)}></span>
