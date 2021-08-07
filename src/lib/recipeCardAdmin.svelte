@@ -13,6 +13,7 @@
         <div class="img">
             <p>{title}</p>
             <img src={imgURL} alt="">
+            <span class="fas fa-trash"></span>
         </div>
         <p class="descripcion">{description}</p>
         <p class="stars">{stars}/5</p>
@@ -53,6 +54,17 @@
                 width: 100%;
                 height: 100%;
                 position: absolute;
+            }
+            span{
+                position: absolute;
+                color: white;
+                z-index: 1;
+                right: 20px;
+                top: 20px;
+                transition: .2s;
+                &:hover{
+                    color: red;
+                }
             }
             &::after{
                 content: '';
