@@ -7,19 +7,36 @@
 
 <script>
     export let id;
-    import { recetasTotal } from '../../store'; 
+    import { recetasTotal } from '../../store';
+    import { db } from '../../firebase';
+    
+    let title = 'titulo';
+    let img = '/img/bg_1.jpg';
+    let description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, deserunt quam id quibusdam dolorum fuga numquam nihil et, nisi illum quos debitis ducimus temporibus quas aliquam accusantium reprehenderit sapiente quod.";
+    let duration = 0;
+    let dificulty = 'As easy as ur sister';
+    let ingredients = ['atun','mas atun','aun mas atun'];
+    let steps = ['sazonar elatun','cocinar el atun','comer el atun'];
+    let puntos = 0;
+    let stars = 0;
+    
+    $recetasTotal.forEach(item =>{
+        if(item.id == id){
+            title = item.titulo;
+            img = item.imgURL;
+            description = item.descripcion;
+            duration = item.duracion;
+            dificulty = item.dificultad;
+            ingredients = item.ingredientes;
+            steps = item.pasos;
+            puntos = item.puntuado;
+        }
+    })
 
     //valores
-    let title = $recetasTotal[id].titulo;
-    let img = $recetasTotal[id].imgURL;
-    let description = $recetasTotal[id].descripcion;
-    let duration = $recetasTotal[id].duracion;
-    let dificulty = $recetasTotal[id].dificultad;
-    let ingredients = $recetasTotal[id].ingredientes;
-    let steps = $recetasTotal[id].pasos;
-    let stars = $recetasTotal[id].puntuado;
+    
 
-    const clickStar = (n) => {
+    const clickStar = async (n) => {
         stars = n;
         let starItems = document.getElementsByClassName("fa-star");
         for (let item of starItems) {
@@ -28,6 +45,13 @@
         for (let i = 0; i < stars; i++) {
             starItems[i].style.color = "orange";   
         }
+
+        await db.collection('recetas/').doc(id).update({
+            puntuado: stars
+        })
+
+        puntos = stars
+        
     }
 
 </script>
@@ -36,7 +60,7 @@
     <div class="title-space">
         <img src={img} alt="">
         <header>{title}</header>
-        <span>{stars}/5</span>
+        <span>{puntos}/5</span>
     </div>
     <div class="recipe-container">
         <div class="meta-container">

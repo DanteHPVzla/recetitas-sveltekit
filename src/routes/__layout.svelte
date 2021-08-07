@@ -29,13 +29,13 @@
                     docs.push({...doc.data(), id: doc.id})
                 })
                 recetasTotal.set([...docs])
-                console.log($recetasTotal)
+
+                recetasUser.set([])
                 $recetasTotal.forEach( item =>{
                     if (item.autor == user.email){
                         recetasUser.set([...$recetasUser,item])
                     }
                 })
-                console.log($recetasUser)
             });
 
         }else{

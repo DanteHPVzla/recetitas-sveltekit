@@ -62,14 +62,14 @@
         </div>
         <div class="recipes">
 
-            {#each $recetasUser as item, i}
+            {#each $recetasUser as item}
                 <!-- content here -->
                 <RecipeCard 
                     imgURL={item.imgURL} 
                     title={item.titulo} 
                     description={item.descripcion}
                     stars = {item.puntuado}
-                    index = {i}
+                    id = {item.id}
                 />
             
             {/each}
