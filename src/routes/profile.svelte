@@ -69,6 +69,7 @@
                     title={item.titulo} 
                     description={item.descripcion}
                     stars = {item.puntuado}
+                    index = {i}
                 />
             
             {/each}

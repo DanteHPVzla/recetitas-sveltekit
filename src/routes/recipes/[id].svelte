@@ -1,4 +1,14 @@
+<script context="module">
+    export async function load({page}) {
+            const id = page.params.id
+            return{props: {id}}
+        }
+</script>
+
 <script>
+    export let id;
+    import { recetasTotal } from '../../store'; 
+
     //valores
     let title = 'titulo';
     let img = '/img/bg_1.jpg';

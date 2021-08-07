@@ -16,22 +16,18 @@
         <div class='linea'></div>
     </div>
     <div class="recipes">
-        <RecipeCard/>
-        <RecipeCard/>
-        <RecipeCard/>
-        <RecipeCard/>
-        <RecipeCard/>
-        <RecipeCard/>
-        <RecipeCard/>
+        {#each $recetasTotal as item, i}
+            <!-- content here -->
+            <RecipeCard 
+                imgURL={item.imgURL} 
+                title={item.titulo} 
+                description={item.descripcion}
+                stars = {item.puntuado}
+                index ={i}
+            />
+        {/each}
     </div>
 </div>
-                <!-- content here -->
-                <!--<RecipeCard 
-                    imgURL={item.imgURL} 
-                    title={item.titulo} 
-                    description={item.descripcion}
-                    stars = {item.puntuado}
-                />-->
 
 <style lang="scss">
     .banner{
