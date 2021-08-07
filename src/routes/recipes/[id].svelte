@@ -8,6 +8,18 @@
     let ingredients = ['atun','mas atun','aun mas atun'];
     let steps = ['sazonar elatun','cocinar el atun','comer el atun'];
     let stars = 0;
+
+    const clickStar = (n) => {
+        stars = n;
+        let starItems = document.getElementsByClassName("fa-star");
+        for (let item of starItems) {
+            item.style.color = "gray"; 
+        }
+        for (let i = 0; i < stars; i++) {
+            starItems[i].style.color = "orange";   
+        }
+    }
+
 </script>
 
 <div class="container">
@@ -41,7 +53,15 @@
              <!-- content here -->
             <p>{i + 1}. {item}</p>
         {/each}
-
+        <div class="rating-container">
+            <h4>Valora esta receta</h4>
+            <span class="fa fa-star" on:click={() => clickStar(1)}></span>
+            <span class="fa fa-star" on:click={() => clickStar(2)}></span>
+            <span class="fa fa-star" on:click={() => clickStar(3)}></span>
+            <span class="fa fa-star" on:click={() => clickStar(4)}></span>
+            <span class="fa fa-star" on:click={() => clickStar(5)}></span>
+            <span>{stars}</span>
+        </div>
     </div>
 </div>
 
@@ -112,6 +132,24 @@
                 .linea{
                     width: 100%;
                     border-top: dashed 3px #f05a28;
+                }
+            }
+        }
+        .rating-container{
+            border-top: dashed 3px #f05a28;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            h4{
+                font-size: 1.5em;
+                margin-bottom: 10px;
+            }
+            span{
+                color: gray;
+                cursor: pointer;
+                &:last-of-type{
+                    cursor: initial;
+                    color: black;
                 }
             }
         }
