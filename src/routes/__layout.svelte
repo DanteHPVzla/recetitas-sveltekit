@@ -1,10 +1,13 @@
 <script>
     import inactiveNav from '$lib/inactiveNav.svelte';
     import activeNav from '$lib/activeNav.svelte';
-    import {auth} from '../firebase'; 
+    import {auth, db} from '../firebase'; 
     import {activeSesion} from '../store';
     import { nombreUsuario , correoUsuario, creacionUsuario, photoURL} from '../store';
     import { recetasUser, recetasTotal } from '../store';
+
+   
+
 
     const navs = [
 		{ sesion: 'inactive', component: inactiveNav },
@@ -19,6 +22,17 @@
             photoURL.set(user.photoURL);
             activeSesion.set(1);
             sesion = navs[1];
+            
+            let recetas = [];
+            db.collection(user.email).onSnapshot(querySnapshot => {
+                let docs =[];
+                querySnapshot.forEach(doc => {
+                    docs.push({...doc.data(), id: doc.id})
+                })
+                recetasUser.set([...docs])
+                console.log($recetasUser)
+            });
+
         }else{
             nombreUsuario.set("No disponible");
             correoUsuario.set("No disponible");
@@ -28,6 +42,7 @@
         }
         });
         
+    
 </script>
 
 <div class="content">

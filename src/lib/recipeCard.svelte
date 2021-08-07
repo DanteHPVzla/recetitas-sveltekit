@@ -1,15 +1,15 @@
 <script>
-    let img = "https://placekitten.com/200/300";
-    let title = "Titulo";
-    //TODO: ponle a la descripcion un maximo de caracteres a mostrar
-    let description = '    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate ut recusandae iusto, quaerat tempore dolorum eligendi? Suscipit corporis tempora eum error, deleniti porro, eaque perspiciatis ducimus, sequi id dignissimos debitis!'
-    let stars = 0;
+    export let imgURL = "https://placekitten.com/200/300";
+    export let title = "undefined"
+    //TODO: ponle a la descripcion un maximo de caracteres a mostrar => Luego, (CAMBIO A FUTURO)
+    export let description = "undefined"
+    export let stars = 0;
 </script>
 
 <div class="card">
     <div class="img">
         <p>{title}</p>
-        <img src={img} alt="">
+        <img src={imgURL} alt="">
     </div>
     <p class="descripcion">{description}</p>
     <p class="stars">{stars}/5</p>

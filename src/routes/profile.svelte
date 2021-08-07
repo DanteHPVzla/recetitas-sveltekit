@@ -2,7 +2,7 @@
 	import RecipeCard from './../lib/recipeCard.svelte';
     import { auth, storage } from '../firebase'
     import { nombreUsuario, creacionUsuario, photoURL, correoUsuario} from '../store'
-
+    import {recetasUser} from '../store';
 
     const show = () => {
         document.getElementById("edit").style.visibility = 'visible';
@@ -61,11 +61,17 @@
             <div class='linea'></div>
         </div>
         <div class="recipes">
-            <RecipeCard/>
-            <RecipeCard/>
-            <RecipeCard/>
-            <RecipeCard/>
-            <RecipeCard/>
+
+            {#each $recetasUser as item, i}
+                <!-- content here -->
+                <RecipeCard 
+                    imgURL={item.imgURL} 
+                    title={item.titulo} 
+                    description={item.descripcion}
+                    stars = {item.puntuado}
+                />
+            
+            {/each}
         </div>
     </section>
 </div>

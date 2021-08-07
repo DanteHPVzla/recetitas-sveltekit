@@ -110,7 +110,7 @@
 <div class="container">
     <form class="paper">
         <div id="pattern">
-            <form class="form-container">
+            <form on:submit|preventDefault={subirReceta} class="form-container">
                 <header>Agregar receta</header>
                 
                 <label for="title">Titulo de la receta</label>
@@ -145,7 +145,7 @@
                     <input type="file" id="foto" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
                 </div>
                 
-                <button on:click={subirReceta} id="subir">Subir</button> 
+                <button id="subir">Subir</button> 
             </form>
         </div>
     </form>
@@ -187,8 +187,6 @@
 
     </section>
 </div>
-
-
 
 <style lang="scss">
     .container{
