@@ -10,14 +10,14 @@
     import { recetasTotal } from '../../store'; 
 
     //valores
-    let title = 'titulo';
-    let img = '/img/bg_1.jpg';
-    let description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, deserunt quam id quibusdam dolorum fuga numquam nihil et, nisi illum quos debitis ducimus temporibus quas aliquam accusantium reprehenderit sapiente quod.";
-    let duration = 0;
-    let dificulty = 'As easy as ur sister';
-    let ingredients = ['atun','mas atun','aun mas atun'];
-    let steps = ['sazonar elatun','cocinar el atun','comer el atun'];
-    let stars = 0;
+    let title = $recetasTotal[id].titulo;
+    let img = $recetasTotal[id].imgURL;
+    let description = $recetasTotal[id].descripcion;
+    let duration = $recetasTotal[id].duracion;
+    let dificulty = $recetasTotal[id].dificultad;
+    let ingredients = $recetasTotal[id].ingredientes;
+    let steps = $recetasTotal[id].pasos;
+    let stars = $recetasTotal[id].puntuado;
 
     const clickStar = (n) => {
         stars = n;
