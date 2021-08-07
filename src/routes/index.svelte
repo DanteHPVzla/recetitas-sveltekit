@@ -67,6 +67,7 @@
             animation: spin 40s linear infinite;
             bottom: 20px;
             left: 20px;
+            filter: drop-shadow(4px 4px 4px rgba(0,0,0,1));
         }
         p{
             color: white;

@@ -69,5 +69,9 @@
             bottom: 20px;
             right: 20px;
         }
+        &:hover{
+            transition: 0.2s;
+            transform: scale(1.02);
+        }
     }
 </style>
