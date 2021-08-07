@@ -7,12 +7,14 @@
 </script>
 
 <div class="card">
-    <div class="img">
-        <p>{title}</p>
-        <img src={imgURL} alt="">
-    </div>
-    <p class="descripcion">{description}</p>
-    <p class="stars">{stars}/5</p>
+    <a href="/">
+        <div class="img">
+            <p>{title}</p>
+            <img src={imgURL} alt="">
+        </div>
+        <p class="descripcion">{description}</p>
+        <p class="stars">{stars}/5</p>
+    </a>
 </div>
 
 <style lang="scss">
@@ -24,6 +26,10 @@
         margin-bottom: 30px;
         overflow: hidden;
         position: relative;
+        a{
+            color: black;
+            text-decoration: none;
+        }
         .img{
             height: 200px;
             overflow: hidden;
@@ -31,15 +37,25 @@
             position: relative;
             p{
                 position: absolute;
-                color: #f05a28;
+                color: white;
                 font-weight: bold;
                 padding: 4px 8px;
                 font-size: 1.5em;
                 bottom: 0;
+                z-index: 1;
             }
             img{
                 object-fit: cover;
                 width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+            &::after{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgba($color: #000000, $alpha: .3);
             }
         }
         .descripcion{
