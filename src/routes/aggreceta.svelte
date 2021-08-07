@@ -54,8 +54,7 @@
         let user = auth.currentUser
 
         ///////////////////////////////////////SUBIENDO IMAGEN
-        
-        let imgURL;
+        //variables de uso
 
         let storageRef = storage.ref('/recetas/' + $correoUsuario + imagen.name);
         
