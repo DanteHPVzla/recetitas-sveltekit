@@ -1,6 +1,7 @@
 <script>
     //Importamos la funcion de registro de usuario AUTH
    import {auth} from "../firebase";
+   import { db } from "../firebase"
 
     let email = ''//Email del usuario
     let password = ''//Password del usuario

@@ -1,9 +1,3 @@
-<script>
-	import{activeSesion} from "../store";
-	import {auth} from "../firebase";
-
-</script>
-
 <nav>
 	<a href="/" class="logoContainer">
 		<img src="./img/logo_1.png" alt="RecipeTime Logo" />

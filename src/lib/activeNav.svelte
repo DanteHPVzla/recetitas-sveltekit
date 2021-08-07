@@ -1,8 +1,7 @@
 <script>
 	import{activeSesion} from "../store";
 	import {auth} from "../firebase";
-
-	let email ='';//Email del usuario
+	import { correoUsuario } from "../store"
 	const logout = async () => {
 		try{
 			if($activeSesion){
@@ -18,6 +17,7 @@
 
 	const borrar = async () =>{
 		let user = auth.currentUser
+		activeSesion.set(0)
 		await user.delete().then(() => {
 			console.log("usuario eliminado...")
 		}).catch((error) => {
@@ -48,12 +48,12 @@
 	<div id="nav-content" tabindex="0">
 		<ul>
 			<li><a href="/">Inicio</a></li>
-			{#if email === "admin@admin.com"}
+			{#if $correoUsuario === "admin@admin.com"}
 				 <!-- content here -->
-				 <li><a href="/admin">Perfil</a></li>
+				 <li><a href="/admin">Perfil admin</a></li>
 			{:else}
 			<!-- else content here -->
-				<li><a href="/profile">Perfil</a></li>
+				<li><a href="/profile">Perfil usuario</a></li>
 			{/if}
 			<li><a href="/aggreceta">Subir Receta</a></li>
 			<li on:click={logout}><a href="/">Cerrar Sesion Activa</a></li>

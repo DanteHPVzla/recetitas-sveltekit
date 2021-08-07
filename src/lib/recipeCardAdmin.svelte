@@ -6,18 +6,23 @@
     export let stars = 0;
     export let id = 0;
 
+    import { db } from '../firebase';
+
+    let borrar = async () =>{
+        db.collection('recetas').doc(id).delete();
+    }
 </script>
 
 <div class="card">
-    <a href={'recipes/' + id}>
+    <div class="a">
         <div class="img">
             <p>{title}</p>
             <img src={imgURL} alt="">
-            <span class="fas fa-trash"></span>
+            <span class="fas fa-trash" on:click={borrar} style="cursor:pointer"></span>
         </div>
         <p class="descripcion">{description}</p>
         <p class="stars">{stars}/5</p>
-    </a>
+    </div>
 </div>
 
 <style lang="scss">
@@ -29,7 +34,7 @@
         margin-bottom: 30px;
         overflow: hidden;
         position: relative;
-        a{
+        .a{
             width: 100%;
             height: 100%;
             color: black;
