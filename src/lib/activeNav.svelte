@@ -14,6 +14,20 @@
 		}
 	}
 
+	const borrar = async () =>{
+		let user = auth.currentUser
+		await user.delete().then(() => {
+			console.log("usuario eliminado...")
+		}).catch((error) => {
+			console.log(error.message)
+		});
+
+		//redireccionamiento
+		window.history.pushState('', '', '/');
+        location.reload();
+                
+	}
+
 </script>
 
 
@@ -35,7 +49,7 @@
 			<li><a href="/profile">Perfil</a></li>
 			<li><a href="/aggreceta">Subir Receta</a></li>
 			<li on:click={logout}><a href="/">Cerrar Sesion Activa</a></li>
-			<li id="delete"><a href="/"><span class="fas fa-trash"></span> Dar de baja</a></li>
+			<li id="delete" on:click={borrar}><a href="/"><span class="fas fa-trash"></span> Dar de baja</a></li>
 		</ul>
 	</div>
 </div>

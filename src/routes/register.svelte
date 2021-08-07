@@ -21,6 +21,12 @@
                     console.log(error)
                 })
 
+                let usuario ={
+                    correo: user.email,
+                    id: user.uid,
+                }
+                await db.collection('usuarios/').doc().set(usuario);
+
                 //Mensaje de validacion
                 console.log("Usuario creado")
                 
