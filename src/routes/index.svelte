@@ -16,14 +16,14 @@
         <div class='linea'></div>
     </div>
     <div class="recipes">
-        {#each $recetasTotal as item, i}
+        {#each $recetasTotal as item}
             <!-- content here -->
             <RecipeCard 
                 imgURL={item.imgURL} 
                 title={item.titulo} 
                 description={item.descripcion}
                 stars = {item.puntuado}
-                index ={i}
+                id = {item.id}
             />
         {/each}
     </div>

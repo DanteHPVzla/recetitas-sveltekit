@@ -4,12 +4,12 @@
     //TODO: ponle a la descripcion un maximo de caracteres a mostrar => Luego, (CAMBIO A FUTURO)
     export let description = "undefined";
     export let stars = 0;
-    export let index = 0;
+    export let id = 0;
 
 </script>
 
 <div class="card">
-    <a href={'recipes/' + index}>
+    <a href={'recipes/' + id}>
         <div class="img">
             <p>{title}</p>
             <img src={imgURL} alt="">
