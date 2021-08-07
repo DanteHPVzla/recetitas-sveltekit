@@ -22,14 +22,6 @@
             photoURL.set(user.photoURL);
             activeSesion.set(1);
             sesion = navs[1];
-            
-            db.collection(user.email).onSnapshot(querySnapshot => {
-                let docs =[];
-                querySnapshot.forEach(doc => {
-                    docs.push({...doc.data(), id: doc.id})
-                })
-                recetasUser.set([...docs])
-            });
 
             db.collection('recetas').onSnapshot(querySnapshot => {
                 let docs =[];
@@ -38,6 +30,12 @@
                 })
                 recetasTotal.set([...docs])
                 console.log($recetasTotal)
+                $recetasTotal.forEach( item =>{
+                    if (item.autor == user.email){
+                        recetasUser.set([...$recetasUser,item])
+                    }
+                })
+                console.log($recetasUser)
             });
 
         }else{

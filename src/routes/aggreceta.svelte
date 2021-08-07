@@ -75,11 +75,10 @@
                             dificultad: dificultad,
                             ingredientes:ingredientes,
                             pasos:pasos,
-                            npuntuado:0,
                             puntuado:0.0,
                             imgURL: downloadURL
                         }
-                        db.collection($correoUsuario).doc().set(receta);
+
                         db.collection('recetas/').doc().set(receta);
                         console.log("SUBIDA EXITOSA BRINDEMOOOS")
                         ////////////////////////////////////////////////////////RESETEO
