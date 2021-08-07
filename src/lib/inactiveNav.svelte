@@ -1,21 +1,8 @@
 <script>
 	import{activeSesion} from "../store";
 	import {auth} from "../firebase";
-	const logout = async () => {
-		try{
-			if($activeSesion){
-				auth.signOut();
-				console.log("Salida exitosa")
-			}else{
-				console.log("No hay usuario activo")
-			}
-		}catch(error){
-			console.log(error.message)
-		}
-	}
 
 </script>
-
 
 <nav>
 	<a href="/" class="logoContainer">
