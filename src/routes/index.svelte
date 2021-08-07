@@ -12,7 +12,7 @@
 </header>
 <div class="container">
     <div class="title-container">
-        <h4>Ingredientes</h4>
+        <h4>Recetas</h4>
         <div class='linea'></div>
     </div>
     <div class="recipes">

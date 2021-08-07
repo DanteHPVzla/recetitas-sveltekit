@@ -149,13 +149,33 @@
 			flex-direction: column;
 			position: relative;
 			#delete{
+				position: absolute;
+				bottom: 65px;
+				width: 100%;
+				text-align: center;
+				border-top: solid 2px;
+				border-color: rgba($color: #000000, $alpha: .6);
 				a{
-					color: #000;
+					color: rgba($color: #000000, $alpha: .8);
+				} &:hover{
+					background-color: rgba($color: #000000, $alpha: 1);
+					a{
+						color: white;
+					}
 				}
 			}
 		}
 		li {
 			padding: 10px 20px;
+			&:nth-of-type(4){
+				background-color: white;
+				a{
+					color: #f05a28;
+					&:hover{
+						color: black;
+					}
+				}
+			}
 			&:hover {
 				background-color: white;
 				transition: all 0.2s;

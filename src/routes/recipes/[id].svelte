@@ -143,7 +143,8 @@
             }
         }
         .recipe-container{
-            max-width: 900px;
+            width: 100%;
+            max-width: 1000px;
             padding: 30px;
             .meta-container{
                 margin-bottom: 10px;
