@@ -52,23 +52,24 @@
     }
 
     function leer(){
-        /*
+       
         if (!'speechSynthesis' in window){
              alert("Lo siento, tu navegador no soporta esta tecnología")
             }
         else{
-            vocesDisponibles = window.speechSynthesis.getVoices();
-            console.log({ vocesDisponibles })
+            if(lectura == steps.length){
+                lectura = 0;
+            }else{
+                try{
+                    speechSynthesis.speak(new SpeechSynthesisUtterance(steps[lectura]));
+                    lectura++;
+                }catch(error){
+                    alert("Lo siento, tu navegador no soporta esta tecnología")
+                }
+            }
         }
     
-        if(lectura == steps.length){
-            lectura = 0;
-        }else{
-            console.log(lectura)
-            window.speechSynthesis.speak("Hola mundo");
-            lectura++;
-        }
-        */
+     
     }
 
 </script>
