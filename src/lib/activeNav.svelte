@@ -35,6 +35,7 @@
 			<li><a href="/profile">Perfil</a></li>
 			<li><a href="/aggreceta">Subir Receta</a></li>
 			<li on:click={logout}><a href="/">Cerrar Sesion Activa</a></li>
+			<li id="delete"><a href="/"><span class="fas fa-trash"></span> Dar de baja</a></li>
 		</ul>
 	</div>
 </div>
@@ -146,6 +147,12 @@
 			height: 100%;
 			display: flex;
 			flex-direction: column;
+			position: relative;
+			#delete{
+				a{
+					color: #000;
+				}
+			}
 		}
 		li {
 			padding: 10px 20px;
