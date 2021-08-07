@@ -1,2 +1,17 @@
+<script>
+    import RecipeCard from './../lib/recipeCard.svelte';
+
+
+</script>
+
 <h1>Index</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, nostrum modi eius dignissimos velit qui ipsam cumque vitae ab excepturi aut magnam deserunt quisquam sunt dolore? Nulla praesentium in accusamus.</p>
+
+<RecipeCard/>
+                <!-- content here -->
+                <!--<RecipeCard 
+                    imgURL={item.imgURL} 
+                    title={item.titulo} 
+                    description={item.descripcion}
+                    stars = {item.puntuado}
+                />-->
+            

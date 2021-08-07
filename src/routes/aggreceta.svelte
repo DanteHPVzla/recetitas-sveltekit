@@ -80,6 +80,7 @@
                             imgURL: downloadURL
                         }
                         db.collection($correoUsuario).doc().set(receta);
+                        db.collection('recetas/').doc().set(receta);
                         console.log("SUBIDA EXITOSA BRINDEMOOOS")
                         ////////////////////////////////////////////////////////RESETEO
                         //reinicio de ingredientes

@@ -23,14 +23,12 @@
             activeSesion.set(1);
             sesion = navs[1];
             
-            let recetas = [];
             db.collection(user.email).onSnapshot(querySnapshot => {
                 let docs =[];
                 querySnapshot.forEach(doc => {
                     docs.push({...doc.data(), id: doc.id})
                 })
                 recetasUser.set([...docs])
-                console.log($recetasUser)
             });
 
         }else{
@@ -41,6 +39,17 @@
             sesion = navs[0];
         }
         });
+
+    //db.collection("/").onSnapshot(querySnapshot => {
+        //let docs =[];
+        //console.log("Entre")
+        //querySnapshot.forEach(doc => {
+          //  console.log(doc.data())
+            //docs.push({...doc.data(), id: doc.id})
+        //})
+        //recetasUser.set([...docs])
+        //console.log(recetasUser)
+          //  });
         
     
 </script>
