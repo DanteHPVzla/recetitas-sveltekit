@@ -1,0 +1,15 @@
+{
+    "hosting": {
+      "public": "<someDir>",
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "<functionName>"
+        }
+      ]
+    },
+    "functions": {
+      "source": "<anotherDir>"
+    }
+  }
+  
