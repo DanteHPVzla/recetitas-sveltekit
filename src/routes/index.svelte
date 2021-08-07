@@ -1,6 +1,6 @@
 <script>
     import RecipeCard from './../lib/recipeCard.svelte';
-
+    import { recetasTotal } from '../store';
 
 </script>
 

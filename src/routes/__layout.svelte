@@ -31,6 +31,15 @@
                 recetasUser.set([...docs])
             });
 
+            db.collection('recetas').onSnapshot(querySnapshot => {
+                let docs =[];
+                querySnapshot.forEach(doc => {
+                    docs.push({...doc.data(), id: doc.id})
+                })
+                recetasTotal.set([...docs])
+                console.log($recetasTotal)
+            });
+
         }else{
             nombreUsuario.set("No disponible");
             correoUsuario.set("No disponible");
@@ -40,17 +49,6 @@
         }
         });
 
-    //db.collection("/").onSnapshot(querySnapshot => {
-        //let docs =[];
-        //console.log("Entre")
-        //querySnapshot.forEach(doc => {
-          //  console.log(doc.data())
-            //docs.push({...doc.data(), id: doc.id})
-        //})
-        //recetasUser.set([...docs])
-        //console.log(recetasUser)
-          //  });
-        
     
 </script>
 
