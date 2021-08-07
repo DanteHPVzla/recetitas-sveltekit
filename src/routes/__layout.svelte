@@ -4,7 +4,7 @@
     import {auth, db} from '../firebase'; 
     import {activeSesion} from '../store';
     import { nombreUsuario , correoUsuario, creacionUsuario, photoURL} from '../store';
-    import { recetasUser, recetasTotal } from '../store';
+    import { recetasUser, recetasTotal, usuarios } from '../store';
 
    
 
@@ -37,6 +37,14 @@
                     }
                 })
             });
+
+            db.collection('usuarios').onSnapshot(querySnapshot => {
+                let docs = [];
+                querySnapshot.forEach(doc =>{
+                    docs.push({...doc.data(), idDoc: doc.id})
+                })
+                usuarios.set([...docs])
+            })
 
         }else{
             nombreUsuario.set("No disponible");

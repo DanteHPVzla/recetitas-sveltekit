@@ -3,6 +3,7 @@
     import { auth, storage } from '../firebase'
     import { nombreUsuario, creacionUsuario, photoURL, correoUsuario} from '../store'
     import { recetasTotal } from '../store';
+    import { usuarios } from '../store';
 
     const show = () => {
         document.getElementById("edit").style.visibility = 'visible';
@@ -37,6 +38,13 @@
                 });
         });
     }
+
+    const mostrar = async () => {
+        alert("CTRL+SHIFT+I PARA ABRIR LA CONSOLA")
+        $usuarios.forEach(item =>{
+            console.log(item.correo)
+        })
+    }
 </script>
 
 <div class="container">
@@ -53,12 +61,11 @@
     </div>
     <section>
         <div class="title-container">
-            <h4>Eliminar usuario</h4>
+            <h4>Ver usuarios</h4>
             <div class='linea'></div>
         </div>
-        <form action="">
-            <input type="text" name="mail" placeholder="Usuario a eliminar">
-            <button>Eliminar</button>
+        <form on:submit|preventDefault={mostrar}>
+            <button>MOSTRAR USUARIOS EN CONSOLA</button>
         </form>
         
         <div class="title-container">
